@@ -218,3 +218,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local files
+.DS_Store
+engine/inbox/*
+!engine/inbox/.gitkeep
+engine/working/*
+!engine/working/.gitkeep
+engine/reports/*
+!engine/reports/.gitkeep

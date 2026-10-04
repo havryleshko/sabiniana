@@ -1,0 +1,17 @@
+{
+  "interchange_caps": [
+    {
+      "name": "UK consumer debit",
+      "rate": 0.002,
+      "source": "UK cap on consumer debit interchange, as recorded in research/card-fee-check-engine-spec.md",
+      "date": null
+    },
+    {
+      "name": "UK consumer credit",
+      "rate": 0.003,
+      "source": "UK cap on consumer credit interchange, as recorded in research/card-fee-check-engine-spec.md",
+      "date": null
+    }
+  ],
+  "fair_all_in_rates": []
+}
