@@ -5,6 +5,8 @@ from __future__ import annotations
 import re
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 
+from sabiniana.price_table import compare_with_observed_average, load_price_table
+
 _MONEY = Decimal("0.01")
 _RATE_TOLERANCE = Decimal("0.000000001")
 _PLAIN_DECIMAL = re.compile(r"^-?\d+(\.\d+)?$")
@@ -29,16 +31,17 @@ _PENALTIES = (
 )
 
 
-def check(statement: dict) -> dict:
+def check(statement: dict, price_table: dict | None = None) -> dict:
     """Return the same result for the same statement.
 
     Expected keys, all optional: total_sales, total_charges, agreed_rate,
-    charged_rate, and fee_lines (a list of {name, amount}).
+    charged_rate, annual_card_turnover, and fee_lines (a list of {name, amount}).
 
     Effective rate is total charges divided by total card sales.
-    Yearly gap stays empty until the price table has a dated fair rate,
-    so the verdict stays incomplete even when findings are present.
+    The price table's observed averages are not a fair price, so yearly_gap
+    stays empty and the verdict stays incomplete.
     """
+    table = load_price_table() if price_table is None else price_table
     findings: list[dict] = []
     findings.extend(_total_findings(statement))
     findings.extend(_small_fee_findings(statement))
@@ -48,6 +51,7 @@ def check(statement: dict) -> dict:
         "effective_rate": _effective_rate(statement),
         "yearly_gap": None,
         "verdict": "incomplete",
+        "observed_comparison": compare_with_observed_average(statement, table),
         "findings": findings,
     }
 

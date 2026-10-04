@@ -3,15 +3,83 @@
     {
       "name": "UK consumer debit",
       "rate": 0.002,
-      "source": "UK cap on consumer debit interchange, as recorded in research/card-fee-check-engine-spec.md",
-      "date": null
+      "source": "Regulation (EU) 2015/751, Article 3, as retained in UK law: a UK consumer debit card interchange fee is capped at 0.2% of the transaction value. legislation.gov.uk Chapter II, up to date with changes in force on or before 8 August 2026.",
+      "date": "2015-12-09",
+      "url": "https://www.legislation.gov.uk/eur/2015/751/chapter/II"
     },
     {
       "name": "UK consumer credit",
       "rate": 0.003,
-      "source": "UK cap on consumer credit interchange, as recorded in research/card-fee-check-engine-spec.md",
-      "date": null
+      "source": "Regulation (EU) 2015/751, Article 4, as retained in UK law: a UK consumer credit card interchange fee is capped at 0.3% of the transaction value. legislation.gov.uk Chapter II, up to date with changes in force on or before 8 August 2026.",
+      "date": "2015-12-09",
+      "url": "https://www.legislation.gov.uk/eur/2015/751/chapter/II"
     }
   ],
-  "fair_all_in_rates": []
+  "fair_all_in_rates": [],
+  "observed_average_msc": {
+    "published": "2021-11-03",
+    "data_period": "2015-12 to 2018-12",
+    "source_title": "Payment Systems Regulator, MR18/1.8 Annex 2: Pass-through analysis (November 2021)",
+    "source_url": "https://www.psr.org.uk/media/njxhptwh/psr-card-acquiring-market-review-final-report-annex-2-nov-2021.pdf",
+    "not_a_fair_price": "These are average merchant service charges paid to the five largest acquirers. The PSR found that merchants with annual card turnover up to £50 million got little or no pass-through of the interchange cap (final report, paragraph 5.25; Annex 2, paragraph 1.60). A practice paying this average is not therefore paying a fair price. PSR MR22/1.10 (6 March 2025) later found that Mastercard and Visa had increased core scheme and processing fees by at least 25% since 2017. That later rise is not added into these rates.",
+    "switching_observation": "For small and medium-sized merchants, those who signed up with their acquirer within the previous year paid 0.05 to 0.19 percentage points less than those who had been with that acquirer for more than two years. Those who signed up after 9 December 2015 paid 0.08 to 0.2 percentage points less than those who signed up before. Final report, paragraphs 5.54 and 5.57. This is a range, so it is not subtracted from the averages.",
+    "bands": [
+      {
+        "name": "Under £15,000",
+        "min": 0,
+        "max": 15000,
+        "rate": "0.0183",
+        "table": "Table 7, group 1, post-IFR aggregate-group ratio",
+        "why_this_table": "Annex 2, paragraph 1.59: month-to-month turnover in this band is volatile, so the PSR places more weight on the aggregate-group ratio than on the merchant-period average."
+      },
+      {
+        "name": "£15,000 to £180,000",
+        "min": 15000,
+        "max": 180000,
+        "rate": "0.0130",
+        "table": "Table 6, group 2, post-IFR merchant-period average",
+        "why_this_table": "Annex 2, paragraph 1.48. Each merchant is weighted equally, which is the PSR's description of a typical merchant's experience."
+      },
+      {
+        "name": "£180,000 to £380,000",
+        "min": 180000,
+        "max": 380000,
+        "rate": "0.0098",
+        "table": "Table 6, group 3, post-IFR merchant-period average",
+        "why_this_table": "Annex 2, paragraph 1.48. Each merchant is weighted equally, which is the PSR's description of a typical merchant's experience."
+      },
+      {
+        "name": "£380,000 to £1 million",
+        "min": 380000,
+        "max": 1000000,
+        "rate": "0.0090",
+        "table": "Table 6, group 4, post-IFR merchant-period average",
+        "why_this_table": "Annex 2, paragraph 1.48. Each merchant is weighted equally, which is the PSR's description of a typical merchant's experience."
+      },
+      {
+        "name": "£1 million to £10 million",
+        "min": 1000000,
+        "max": 10000000,
+        "rate": "0.0082",
+        "table": "Table 6, group 5, post-IFR merchant-period average",
+        "why_this_table": "Annex 2, paragraph 1.48. Each merchant is weighted equally, which is the PSR's description of a typical merchant's experience."
+      },
+      {
+        "name": "£10 million to £50 million",
+        "min": 10000000,
+        "max": 50000000,
+        "rate": "0.0070",
+        "table": "Table 6, group 6, post-IFR merchant-period average",
+        "why_this_table": "Annex 2, paragraph 1.48. Each merchant is weighted equally, which is the PSR's description of a typical merchant's experience."
+      },
+      {
+        "name": "£50 million or more",
+        "min": 50000000,
+        "max": null,
+        "rate": "0.0040",
+        "table": "Table 6, group 7, post-IFR merchant-period average",
+        "why_this_table": "Annex 2, paragraph 1.48. Each merchant is weighted equally. This band has no upper limit and the sample excluded the very largest merchants (Box 3)."
+      }
+    ]
+  }
 }

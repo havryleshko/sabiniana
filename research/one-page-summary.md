@@ -43,7 +43,7 @@ Bills we watch, in this order: card fees, then lab, then consumables, energy, se
 | Step | What it does | Status |
 |---|---|---|
 | Read | AI turns a bill (PDF) into numbers | v0 works on the 7 samples only. **Next: real AI reader (needs your API key)** |
-| Check | Plain code does all the maths: effective rate, charged vs agreed, duplicates, extra fees, renewals, fair price | Hand-typed statements: effective rate, line total, repeated small fees, PCI non-compliance, charged vs agreed. Yearly gap and the fair-price verdict wait on a dated all-in rate. |
+| Check | Plain code does all the maths: effective rate, charged vs agreed, duplicates, extra fees, renewals, fair price | Hand-typed statements: effective rate, line total, repeated small fees, PCI non-compliance, charged vs agreed, and a comparison with the PSR's 2015–2018 observed average merchant service charge. That average is not a fair price, so the yearly gap and the verdict stay incomplete. |
 | Write | AI writes the plain-English page, using only the checked numbers | v0 is a template |
 | Approve | You read every page before it goes out | Manual, by design |
 
