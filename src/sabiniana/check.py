@@ -30,12 +30,21 @@ _PENALTIES = (
     ),
 )
 
+# Product rules of thumb from tests/answer-key-SAMPLE.md. They are not cited market rates.
+# A terminal hire longer than 18 months is flagged (statement 06).
+# A cost-plus margin above 0.25% is flagged. The key calls 0.18% and 0.25% fine
+# (statements 02 and 11) and 0.55% a bad price (statement 08).
+_LONG_TERMINAL_MONTHS = 18
+_MARGIN_FLAG_ABOVE = Decimal("0.0025")
+
 
 def check(statement: dict, price_table: dict | None = None) -> dict:
     """Return the same result for the same statement.
 
     Expected keys, all optional: total_sales, total_charges, agreed_rate,
-    charged_rate, annual_card_turnover, and fee_lines (a list of {name, amount}).
+    charged_rate, annual_card_turnover, headline_rate, bands, acquirer_margin,
+    terminal_contract_months, minimum_monthly_charge, upcoming_rate, and
+    fee_lines (a list of {name, amount}).
 
     Effective rate is total charges divided by total card sales.
     The price table's observed averages are not a fair price, so yearly_gap
@@ -45,7 +54,12 @@ def check(statement: dict, price_table: dict | None = None) -> dict:
     findings: list[dict] = []
     findings.extend(_total_findings(statement))
     findings.extend(_small_fee_findings(statement))
+    findings.extend(_duplicate_findings(statement))
     findings.extend(_penalty_findings(statement))
+    findings.extend(_plan_findings(statement))
+    findings.extend(_contract_findings(statement))
+    findings.extend(_margin_findings(statement))
+    findings.extend(_upcoming_rate_findings(statement))
     findings.extend(_rate_findings(statement))
     return {
         "effective_rate": _effective_rate(statement),
@@ -57,11 +71,11 @@ def check(statement: dict, price_table: dict | None = None) -> dict:
 
 
 def _effective_rate(statement: dict) -> float | None:
-    sales = statement.get("total_sales")
-    charges = statement.get("total_charges")
-    if not _is_number(sales) or not _is_number(charges) or not sales:
+    sales = _decimal(statement.get("total_sales"))
+    charges = _decimal(statement.get("total_charges"))
+    if sales is None or charges is None or sales == 0:
         return None
-    return charges / sales
+    return float(charges / sales)
 
 
 def _total_findings(statement: dict) -> list[dict]:
@@ -209,17 +223,204 @@ def _rate_findings(statement: dict) -> list[dict]:
     difference = charged - agreed
     if abs(difference) <= _RATE_TOLERANCE:
         return []
-    return [
-        {
-            "code": "charged_rate_differs",
-            "summary": (
-                f"Charged rate {_rate_text(charged)} differs from the agreed rate {_rate_text(agreed)}."
-            ),
-            "agreed_rate": _rate_text(agreed),
-            "charged_rate": _rate_text(charged),
-            "difference": _rate_text(difference),
-        }
-    ]
+    finding = {
+        "code": "charged_rate_differs",
+        "summary": (
+            f"Charged rate {_rate_text(charged)} differs from the agreed rate {_rate_text(agreed)}."
+        ),
+        "agreed_rate": _rate_text(agreed),
+        "charged_rate": _rate_text(charged),
+        "difference": _rate_text(difference),
+    }
+    sales = _decimal(statement.get("total_sales"))
+    if sales is not None and sales > 0:
+        monthly = difference * sales
+        finding["monthly_difference"] = _pounds(monthly)
+        finding["yearly_difference"] = _pounds(monthly * 12)
+        finding["summary"] = (
+            f"Charged rate {_percent(charged)} differs from the agreed rate {_percent(agreed)}. "
+            f"On this month's card sales that is £{_pounds(monthly)} "
+            f"(£{_pounds(monthly * 12)} a year)."
+        )
+    return [finding]
+
+
+def _duplicate_findings(statement: dict) -> list[dict]:
+    lines = statement.get("fee_lines")
+    if not isinstance(lines, list):
+        return []
+    grouped: dict[str, list[dict]] = {}
+    order: list[str] = []
+    for line in lines:
+        if not isinstance(line, dict):
+            continue
+        key = _normalise(line.get("name"))
+        if not key:
+            continue
+        if key not in grouped:
+            grouped[key] = []
+            order.append(key)
+        grouped[key].append(line)
+    findings = []
+    for key in order:
+        group = grouped[key]
+        if len(group) < 2:
+            continue
+        names, amounts = _names_and_amounts(group)
+        findings.append(
+            {
+                "code": "duplicate_fee",
+                "summary": f"{names[0]} appears {len(group)} times.",
+                "name": names[0],
+                "count": len(group),
+                "names": names,
+                "amounts": amounts,
+            }
+        )
+    return findings
+
+
+def _plan_findings(statement: dict) -> list[dict]:
+    findings: list[dict] = []
+    headline = _decimal(statement.get("headline_rate"))
+    if headline is not None:
+        findings.append(
+            {
+                "code": "plan_flat",
+                "summary": f"One flat rate of {_percent(headline)} is charged on card sales.",
+                "rate": _rate_text(headline),
+            }
+        )
+    bands = statement.get("bands")
+    if not isinstance(bands, list):
+        return findings
+    priced = []
+    for band in bands:
+        if not isinstance(band, dict):
+            continue
+        rate = _decimal(band.get("rate"))
+        if rate is not None:
+            priced.append((rate, band))
+    if len(priced) < 2:
+        return findings
+    rate, band = max(priced, key=lambda item: item[0])
+    sales = _decimal(band.get("sales"))
+    payments = band.get("payments")
+    name = band.get("name") if isinstance(band.get("name"), str) else "Top band"
+    sales_text = f" on £{_pounds(sales)}" if sales is not None else ""
+    payment_text = f" ({payments} payments)" if isinstance(payments, int) else ""
+    finding = {
+        "code": "tier_top_band",
+        "summary": f"{name} is the top band at {_percent(rate)}{sales_text}{payment_text}.",
+        "name": name,
+        "rate": _rate_text(rate),
+    }
+    if sales is not None:
+        finding["sales"] = _pounds(sales)
+    if isinstance(payments, int):
+        finding["payments"] = payments
+    amount = _decimal(band.get("amount"))
+    if amount is not None:
+        finding["amount"] = _pounds(amount)
+    findings.append(finding)
+    return findings
+
+
+def _contract_findings(statement: dict) -> list[dict]:
+    findings: list[dict] = []
+    months = _decimal(statement.get("terminal_contract_months"))
+    if months is not None and months > _LONG_TERMINAL_MONTHS:
+        shown = int(months) if months == int(months) else months
+        findings.append(
+            {
+                "code": "long_terminal_contract",
+                "summary": (
+                    f"Terminal hire is {shown} months. "
+                    f"The rule of thumb is {_LONG_TERMINAL_MONTHS} months."
+                ),
+                "months": int(months) if months == int(months) else _rate_text(months),
+                "limit_months": _LONG_TERMINAL_MONTHS,
+            }
+        )
+    minimum = statement.get("minimum_monthly_charge")
+    if isinstance(minimum, dict):
+        top_up = _decimal(minimum.get("top_up"))
+        floor = _decimal(minimum.get("minimum"))
+        processing = _decimal(minimum.get("processing_fees"))
+        if top_up is not None and top_up > 0 and floor is not None and processing is not None:
+            findings.append(
+                {
+                    "code": "minimum_monthly_charge",
+                    "summary": (
+                        f"A £{_pounds(top_up)} top-up brings processing fees of "
+                        f"£{_pounds(processing)} up to the £{_pounds(floor)} monthly minimum."
+                    ),
+                    "minimum": _pounds(floor),
+                    "processing_fees": _pounds(processing),
+                    "top_up": _pounds(top_up),
+                }
+            )
+    return findings
+
+
+def _margin_findings(statement: dict) -> list[dict]:
+    margin = _decimal(statement.get("acquirer_margin"))
+    if margin is None or margin <= _MARGIN_FLAG_ABOVE:
+        return []
+    amount = _service_charge_amount(statement)
+    amount_text = f" (£{_pounds(amount)} this month)" if amount is not None else ""
+    finding = {
+        "code": "acquirer_margin",
+        "summary": f"Acquirer margin is {_percent(margin)}{amount_text}.",
+        "rate": _rate_text(margin),
+    }
+    if amount is not None:
+        finding["amount"] = _pounds(amount)
+    return [finding]
+
+
+def _upcoming_rate_findings(statement: dict) -> list[dict]:
+    change = statement.get("upcoming_rate")
+    if not isinstance(change, dict):
+        return []
+    old = _decimal(change.get("from_rate"))
+    new = _decimal(change.get("to_rate"))
+    if old is None or new is None or new <= old:
+        return []
+    date = change.get("effective_date")
+    date_text = date if isinstance(date, str) and date else "a later date"
+    finding = {
+        "code": "upcoming_rate",
+        "summary": f"Processing rate rises from {_percent(old)} to {_percent(new)} on {date_text}.",
+        "from_rate": _rate_text(old),
+        "to_rate": _rate_text(new),
+        "effective_date": date_text,
+    }
+    sales = _decimal(statement.get("total_sales"))
+    if sales is not None and sales > 0:
+        monthly = (new - old) * sales
+        finding["monthly_difference"] = _pounds(monthly)
+        finding["yearly_difference"] = _pounds(monthly * 12)
+        finding["summary"] = (
+            f"Processing rate rises from {_percent(old)} to {_percent(new)} on {date_text}. "
+            f"On this month's card sales that is £{_pounds(monthly)} more a month "
+            f"(£{_pounds(monthly * 12)} a year)."
+        )
+    return [finding]
+
+
+def _service_charge_amount(statement: dict) -> Decimal | None:
+    lines = statement.get("fee_lines")
+    if not isinstance(lines, list):
+        return None
+    for line in lines:
+        if isinstance(line, dict) and "service charge" in _normalise(line.get("name")):
+            return _decimal(line.get("amount"))
+    return None
+
+
+def _percent(rate: Decimal) -> str:
+    return f"{(rate * 100).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP):.2f}%"
 
 
 def _line_amount(line: object, index: int) -> tuple[Decimal | None, str]:
@@ -296,5 +497,3 @@ def _rate_text(rate: Decimal) -> str:
     return text or "0"
 
 
-def _is_number(value: object) -> bool:
-    return isinstance(value, (int, float)) and not isinstance(value, bool)

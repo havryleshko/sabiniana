@@ -1,0 +1,254 @@
+[
+  {
+    "id": "01",
+    "practice": "Cedar House Dental",
+    "answer_key_percent": "1.75",
+    "statement": {
+      "total_sales": "14000.00",
+      "total_charges": "245.00",
+      "headline_rate": "0.0175",
+      "fee_lines": [
+        {"name": "Processing fee", "amount": "245.00"}
+      ]
+    }
+  },
+  {
+    "id": "02",
+    "practice": "Harbour View Dental",
+    "answer_key_percent": "0.75",
+    "statement": {
+      "total_sales": "95000.00",
+      "total_charges": "708.40",
+      "acquirer_margin": "0.0018",
+      "fee_lines": [
+        {"name": "Interchange", "amount": "334.40"},
+        {"name": "Scheme fees", "amount": "114.00"},
+        {"name": "Our service charge", "amount": "171.00"},
+        {"name": "Transaction fee", "amount": "30.00"},
+        {"name": "Terminal rental", "amount": "54.00"},
+        {"name": "Compliance (PCI) fee", "amount": "5.00"}
+      ]
+    }
+  },
+  {
+    "id": "03",
+    "practice": "Kingsway Dental Studio",
+    "answer_key_percent": "2.15",
+    "statement": {
+      "total_sales": "52000.00",
+      "total_charges": "1118.00",
+      "bands": [
+        {"name": "Qualified (most UK debit, contactless)", "payments": 300, "sales": "22000.00", "rate": "0.0115", "amount": "253.00"},
+        {"name": "Mid-qualified (credit, some business cards)", "payments": 130, "sales": "17500.00", "rate": "0.0189", "amount": "330.75"},
+        {"name": "Non-qualified (keyed, overseas, other)", "payments": 90, "sales": "12500.00", "rate": "0.0299", "amount": "373.75"}
+      ],
+      "fee_lines": [
+        {"name": "Processing charges", "amount": "957.50"},
+        {"name": "Transaction fee", "amount": "52.00"},
+        {"name": "Terminal rental", "amount": "87.00"},
+        {"name": "Statement fee", "amount": "9.50"},
+        {"name": "Compliance (PCI) fee", "amount": "12.00"}
+      ]
+    }
+  },
+  {
+    "id": "04",
+    "practice": "Meadowbank Dental",
+    "answer_key_percent": "1.62",
+    "statement": {
+      "total_sales": "70000.00",
+      "total_charges": "1132.50",
+      "headline_rate": "0.015",
+      "agreed_rate": "0.0125",
+      "charged_rate": "0.015",
+      "fee_lines": [
+        {"name": "Processing fee", "amount": "1050.00"},
+        {"name": "Transaction fee", "amount": "34.50"},
+        {"name": "Terminal rental", "amount": "40.00"},
+        {"name": "Compliance (PCI) fee", "amount": "8.00"}
+      ]
+    }
+  },
+  {
+    "id": "05",
+    "practice": "St Albans Road Dental",
+    "answer_key_percent": "1.89",
+    "statement": {
+      "total_sales": "30000.00",
+      "total_charges": "567.85",
+      "headline_rate": "0.0139",
+      "fee_lines": [
+        {"name": "Processing fee", "amount": "417.00"},
+        {"name": "Transaction fee", "amount": "20.40"},
+        {"name": "Terminal rental", "amount": "48.00"},
+        {"name": "Statement fee", "amount": "9.95"},
+        {"name": "Gateway fee", "amount": "15.00"},
+        {"name": "Account administration fee", "amount": "12.50"},
+        {"name": "PCI non-compliance fee", "amount": "45.00"}
+      ]
+    }
+  },
+  {
+    "id": "06",
+    "practice": "Thornbury Dental Care",
+    "answer_key_percent": "1.50",
+    "statement": {
+      "total_sales": "48000.00",
+      "total_charges": "719.70",
+      "headline_rate": "0.0129",
+      "terminal_contract_months": 60,
+      "fee_lines": [
+        {"name": "Processing fee", "amount": "619.20"},
+        {"name": "Transaction fee", "amount": "23.50"},
+        {"name": "Terminal rental", "amount": "69.00"},
+        {"name": "Compliance (PCI) fee", "amount": "8.00"}
+      ]
+    }
+  },
+  {
+    "id": "07",
+    "practice": "Greenacre Family Dental",
+    "answer_key_percent": "1.99",
+    "statement": {
+      "total_sales": "8500.00",
+      "total_charges": "169.00",
+      "headline_rate": "0.016",
+      "minimum_monthly_charge": {
+        "minimum": "150.00",
+        "processing_fees": "136.00",
+        "top_up": "14.00"
+      },
+      "fee_lines": [
+        {"name": "Processing fee", "amount": "136.00"},
+        {"name": "Terminal rental", "amount": "19.00"},
+        {"name": "Minimum monthly charge top-up", "amount": "14.00"}
+      ]
+    }
+  },
+  {
+    "id": "08",
+    "practice": "Pembroke Dental Clinic",
+    "answer_key_percent": "1.19",
+    "statement": {
+      "total_sales": "110000.00",
+      "total_charges": "1312.70",
+      "acquirer_margin": "0.0055",
+      "fee_lines": [
+        {"name": "Interchange", "amount": "387.20"},
+        {"name": "Scheme fees", "amount": "132.00"},
+        {"name": "Our service charge", "amount": "605.00"},
+        {"name": "Transaction fee", "amount": "103.50"},
+        {"name": "Terminal rental", "amount": "80.00"},
+        {"name": "Compliance (PCI) fee", "amount": "5.00"}
+      ]
+    }
+  },
+  {
+    "id": "09",
+    "practice": "Ashdown Dental",
+    "answer_key_percent": "1.70",
+    "statement": {
+      "total_sales": "40000.00",
+      "total_charges": "679.00",
+      "headline_rate": "0.0145",
+      "fee_lines": [
+        {"name": "Processing fee", "amount": "580.00"},
+        {"name": "Transaction fee", "amount": "20.50"},
+        {"name": "Terminal rental", "amount": "40.00"},
+        {"name": "Compliance (PCI) fee", "amount": "8.00"},
+        {"name": "Compliance (PCI) fee", "amount": "8.00"}
+      ]
+    }
+  },
+  {
+    "id": "10",
+    "practice": "Larchfield Implant and Dental Centre",
+    "answer_key_percent": "1.23",
+    "statement": {
+      "total_sales": "160000.00",
+      "total_charges": "1972.00",
+      "headline_rate": "0.0119",
+      "fee_lines": [
+        {"name": "Processing fee", "amount": "1904.00"},
+        {"name": "Transaction fee", "amount": "30.00"},
+        {"name": "Terminal rental", "amount": "30.00"},
+        {"name": "Compliance (PCI) fee", "amount": "8.00"}
+      ]
+    }
+  },
+  {
+    "id": "11",
+    "practice": "Wren Street Dental",
+    "answer_key_percent": "0.87",
+    "statement": {
+      "total_sales": "65000.00",
+      "total_charges": "567.30",
+      "acquirer_margin": "0.0025",
+      "fee_lines": [
+        {"name": "Interchange", "amount": "228.80"},
+        {"name": "Scheme fees", "amount": "78.00"},
+        {"name": "Our service charge", "amount": "162.50"},
+        {"name": "Transaction fee", "amount": "28.00"},
+        {"name": "Terminal rental", "amount": "40.00"},
+        {"name": "Compliance (PCI) fee", "amount": "5.00"},
+        {"name": "Chargeback fee", "amount": "25.00"}
+      ]
+    }
+  },
+  {
+    "id": "12",
+    "practice": "Old Mill Dental Practice",
+    "answer_key_percent": "1.59",
+    "statement": {
+      "total_sales": "36000.00",
+      "total_charges": "571.40",
+      "headline_rate": "0.0139",
+      "upcoming_rate": {
+        "from_rate": "0.0139",
+        "to_rate": "0.0169",
+        "effective_date": "2026-11-01"
+      },
+      "fee_lines": [
+        {"name": "Processing fee", "amount": "500.40"},
+        {"name": "Transaction fee", "amount": "19.00"},
+        {"name": "Terminal rental", "amount": "44.00"},
+        {"name": "Compliance (PCI) fee", "amount": "8.00"}
+      ]
+    }
+  },
+  {
+    "id": "13",
+    "practice": "Bayside Dental Group",
+    "answer_key_percent": "1.89",
+    "statement": {
+      "total_sales": "85000.00",
+      "total_charges": "1609.05",
+      "bands": [
+        {"name": "Qualified (most UK debit, contactless)", "payments": 430, "sales": "38000.00", "rate": "0.0095", "amount": "361.00"},
+        {"name": "Mid-qualified (credit, some business cards)", "payments": 220, "sales": "25000.00", "rate": "0.0165", "amount": "412.50"},
+        {"name": "Non-qualified (keyed, overseas, other)", "payments": 170, "sales": "22000.00", "rate": "0.0275", "amount": "605.00"}
+      ],
+      "fee_lines": [
+        {"name": "Processing charges", "amount": "1378.50"},
+        {"name": "Transaction fee", "amount": "65.60"},
+        {"name": "Terminal rental", "amount": "125.00"},
+        {"name": "PCI non-compliance fee", "amount": "39.95"}
+      ]
+    }
+  },
+  {
+    "id": "14",
+    "practice": "Foxglove Dental",
+    "answer_key_percent": "2.57",
+    "statement": {
+      "total_sales": "5000.00",
+      "total_charges": "128.50",
+      "headline_rate": "0.0169",
+      "fee_lines": [
+        {"name": "Processing fee", "amount": "84.50"},
+        {"name": "Terminal rental", "amount": "25.00"},
+        {"name": "Account administration fee", "amount": "19.00"}
+      ]
+    }
+  }
+]

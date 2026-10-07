@@ -1,0 +1,302 @@
+[
+  {
+    "id": "15",
+    "practice": "Cedar House Dental",
+    "document": {
+      "kind": "lab",
+      "invoice_date": "2026-09-30",
+      "net": "345.00",
+      "vat": {"rate": "0.20", "amount": "69.00"},
+      "total": "414.00",
+      "lines": [
+        {"name": "e.max crown", "quantity": "2", "unit_price": "95.00", "amount": "190.00"},
+        {"name": "Full-contour zirconia crown", "quantity": "1", "unit_price": "85.00", "amount": "85.00"},
+        {"name": "Porcelain bonded crown (private)", "quantity": "1", "unit_price": "70.00", "amount": "70.00"}
+      ]
+    }
+  },
+  {
+    "id": "16",
+    "practice": "Kingsway Dental Studio",
+    "document": {
+      "kind": "lab",
+      "invoice_date": "2026-09-30",
+      "net": "1540.00",
+      "vat": {"rate": "0", "amount": "0.00"},
+      "total": "1540.00",
+      "lines": [
+        {"name": "e.max crown", "quantity": "3", "unit_price": "165.00", "amount": "495.00"},
+        {"name": "Zirconia crown (layered)", "quantity": "2", "unit_price": "155.00", "amount": "310.00"},
+        {"name": "e.max veneer", "quantity": "4", "unit_price": "160.00", "amount": "640.00"},
+        {"name": "Occlusal splint (hard)", "quantity": "1", "unit_price": "95.00", "amount": "95.00"}
+      ]
+    }
+  },
+  {
+    "id": "17",
+    "practice": "Harbour View Dental",
+    "document": {
+      "kind": "lab",
+      "invoice_date": "2026-09-30",
+      "remake_free_within_days": "90",
+      "net": "1015.00",
+      "vat": {"rate": "0", "amount": "0.00"},
+      "total": "1015.00",
+      "lines": [
+        {"name": "e.max crown", "quantity": "4", "unit_price": "110.00", "amount": "440.00"},
+        {"name": "Full-contour zirconia crown", "quantity": "3", "unit_price": "95.00", "amount": "285.00"},
+        {
+          "name": "Remake: e.max crown (shade adjustment)",
+          "case_ref": "H-3150",
+          "remake": true,
+          "original_delivered": "2026-08-14",
+          "quantity": "1",
+          "unit_price": "110.00",
+          "amount": "110.00"
+        },
+        {"name": "Acrylic partial denture", "quantity": "1", "unit_price": "180.00", "amount": "180.00"}
+      ]
+    }
+  },
+  {
+    "id": "18",
+    "practice": "Meadowbank Dental",
+    "document": {
+      "kind": "lab",
+      "invoice_date": "2026-09-30",
+      "net": "589.00",
+      "vat": {"rate": "0", "amount": "0.00"},
+      "total": "589.00",
+      "lines": [
+        {"name": "Full-contour zirconia crown", "case_ref": "M-2201", "quantity": "2", "unit_price": "90.00", "amount": "180.00"},
+        {"name": "e.max crown", "case_ref": "M-2204", "quantity": "1", "unit_price": "105.00", "amount": "105.00"},
+        {"name": "Porcelain bonded crown (private)", "case_ref": "M-2209", "quantity": "2", "unit_price": "72.00", "amount": "144.00"},
+        {"name": "e.max crown", "case_ref": "M-2204", "quantity": "1", "unit_price": "105.00", "amount": "105.00"},
+        {"name": "Essix retainer (pair)", "case_ref": "M-2215", "quantity": "1", "unit_price": "55.00", "amount": "55.00"}
+      ]
+    }
+  },
+  {
+    "id": "19",
+    "practice": "Pembroke Dental Clinic",
+    "document": {
+      "kind": "lab",
+      "invoice_date": "2026-09-30",
+      "price_rise": {"percent": "0.08", "from_date": "2026-10-01"},
+      "net": "1869.00",
+      "vat": {"rate": "0", "amount": "0.00"},
+      "total": "1869.00",
+      "lines": [
+        {"name": "e.max crown", "quantity": "6", "unit_price": "115.00", "amount": "690.00"},
+        {"name": "Full-contour zirconia crown", "quantity": "5", "unit_price": "98.00", "amount": "490.00"},
+        {"name": "Zirconia implant crown (screw retained)", "quantity": "2", "unit_price": "260.00", "amount": "520.00"},
+        {"name": "Porcelain bonded crown (private)", "quantity": "1", "unit_price": "78.00", "amount": "78.00"},
+        {
+          "name": "Courier collection and delivery",
+          "quantity": "14",
+          "unit_price": "6.50",
+          "amount": "91.00",
+          "excluded_from_rise": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "20",
+    "practice": "Wren Street Dental",
+    "document": {
+      "kind": "lab",
+      "invoice_date": "2026-09-30",
+      "net": "590.00",
+      "vat": {"rate": "0", "amount": "0.00"},
+      "total": "590.00",
+      "lines": [
+        {"name": "e.max crown", "quantity": "3", "unit_price": "98.00", "amount": "294.00"},
+        {"name": "Full-contour zirconia crown", "quantity": "2", "unit_price": "80.00", "amount": "160.00"},
+        {"name": "Porcelain bonded crown (private)", "quantity": "2", "unit_price": "68.00", "amount": "136.00"}
+      ]
+    }
+  },
+  {
+    "id": "21",
+    "practice": "Larchfield Implant and Dental Centre",
+    "document": {
+      "kind": "lab",
+      "invoice_date": "2026-09-30",
+      "net": "3660.00",
+      "vat": {"rate": "0", "amount": "0.00"},
+      "total": "3660.00",
+      "lines": [
+        {"name": "Zirconia implant crown (screw retained)", "quantity": "6", "unit_price": "340.00", "amount": "2040.00"},
+        {"name": "Implant abutment (custom)", "quantity": "6", "unit_price": "150.00", "amount": "900.00"},
+        {"name": "e.max crown", "quantity": "4", "unit_price": "120.00", "amount": "480.00"},
+        {"name": "Premium materials surcharge", "quantity": "16", "unit_price": "15.00", "amount": "240.00"}
+      ]
+    }
+  },
+  {
+    "id": "22",
+    "practice": "Thornbury Dental Care",
+    "document": {
+      "kind": "energy",
+      "bill_date": "2026-09-30",
+      "contract": {"status": "out_of_contract", "since": "2026-04-01"},
+      "net": "869.42",
+      "vat": {"rate": "0.20", "amount": "173.88"},
+      "total": "1043.30",
+      "lines": [
+        {"name": "Electricity used", "quantity": "2100", "unit_price": "0.3920", "rate_pence": "39.20", "amount": "823.20"},
+        {"name": "Standing charge", "quantity": "30", "unit_price": "0.98", "amount": "29.40"},
+        {"name": "Climate Change Levy", "quantity": "2100", "unit_price": "0.00801", "amount": "16.82"}
+      ]
+    }
+  },
+  {
+    "id": "23",
+    "practice": "Greenacre Family Dental",
+    "document": {
+      "kind": "energy",
+      "bill_date": "2026-09-30",
+      "contract": {"status": "fixed", "ends": "2026-11-30", "rollover_rate_pence": "36.90"},
+      "net": "391.01",
+      "vat": {"rate": "0.20", "amount": "78.20"},
+      "total": "469.21",
+      "lines": [
+        {"name": "Electricity used", "quantity": "1400", "unit_price": "0.2580", "rate_pence": "25.80", "amount": "361.20"},
+        {"name": "Standing charge", "quantity": "30", "unit_price": "0.62", "amount": "18.60"},
+        {"name": "Climate Change Levy", "quantity": "1400", "unit_price": "0.00801", "amount": "11.21"}
+      ]
+    }
+  },
+  {
+    "id": "24",
+    "practice": "Kingsway Dental Studio",
+    "document": {
+      "kind": "energy",
+      "bill_date": "2026-09-30",
+      "contract": {"status": "fixed", "ends": "2027-08-31"},
+      "meter": {"kind": "estimated", "last_actual": "2026-06-12"},
+      "net": "751.06",
+      "vat": {"rate": "0.20", "amount": "150.21"},
+      "total": "901.27",
+      "lines": [
+        {"name": "Electricity used", "quantity": "1750", "unit_price": "0.2710", "rate_pence": "27.10", "amount": "474.25"},
+        {"name": "Electricity standing charge", "quantity": "30", "unit_price": "0.70", "amount": "21.00"},
+        {"name": "Gas used", "quantity": "2900", "unit_price": "0.0720", "amount": "208.80"},
+        {"name": "Gas standing charge", "quantity": "30", "unit_price": "0.45", "amount": "13.50"},
+        {"name": "Climate Change Levy (electricity)", "quantity": "1750", "unit_price": "0.00801", "amount": "14.02"},
+        {"name": "Climate Change Levy (gas)", "quantity": "2900", "unit_price": "0.00672", "amount": "19.49"}
+      ]
+    }
+  },
+  {
+    "id": "25",
+    "practice": "Old Mill Dental Practice",
+    "document": {
+      "kind": "energy",
+      "bill_date": "2026-09-30",
+      "contract": {"status": "rollover", "started": "2026-07-01", "previous_end": "2026-06-30"},
+      "net": "574.32",
+      "vat": {"rate": "0.20", "amount": "114.86"},
+      "total": "689.18",
+      "lines": [
+        {"name": "Electricity used", "quantity": "1600", "unit_price": "0.3350", "rate_pence": "33.50", "amount": "536.00"},
+        {"name": "Standing charge", "quantity": "30", "unit_price": "0.85", "amount": "25.50"},
+        {"name": "Climate Change Levy", "quantity": "1600", "unit_price": "0.00801", "amount": "12.82"}
+      ]
+    }
+  },
+  {
+    "id": "26",
+    "practice": "Meadowbank Dental",
+    "document": {
+      "kind": "supplies",
+      "invoice_date": "2026-09-22",
+      "free_extras_over": "100.00",
+      "net": "79.80",
+      "vat": {"rate": "0.20", "amount": "15.96"},
+      "total": "95.76",
+      "lines": [
+        {"name": "Nitrile gloves, medium (box 100)", "quantity": "4", "unit_price": "4.95", "amount": "19.80"},
+        {"name": "Saliva ejectors (pack 100)", "quantity": "1", "unit_price": "6.50", "amount": "6.50"},
+        {"name": "Composite syringe A2 (4g)", "quantity": "2", "unit_price": "19.80", "amount": "39.60"},
+        {"name": "Small order surcharge (orders under £100)", "amount": "7.95", "extra": true},
+        {"name": "Delivery", "amount": "5.95", "extra": true}
+      ]
+    }
+  },
+  {
+    "id": "27",
+    "practice": "Bayside Dental Group",
+    "document": {
+      "kind": "supplies",
+      "invoice_date": "2026-09-22",
+      "net": "587.50",
+      "vat": {"rate": "0.20", "amount": "117.50"},
+      "total": "705.00",
+      "lines": [
+        {"name": "Nitrile gloves, small (box 100)", "quantity": "30", "unit_price": "4.60", "amount": "138.00"},
+        {"name": "Nitrile gloves, medium (box 100)", "quantity": "50", "unit_price": "4.20", "amount": "231.00"},
+        {"name": "Face masks type IIR (box 50)", "quantity": "20", "unit_price": "5.10", "amount": "102.00"},
+        {"name": "Cotton wool rolls (pack 500)", "quantity": "10", "unit_price": "3.25", "amount": "32.50"},
+        {"name": "Prophy paste (cups 200)", "quantity": "4", "unit_price": "21.00", "amount": "84.00"}
+      ]
+    }
+  },
+  {
+    "id": "28",
+    "practice": "Ashdown Dental",
+    "document": {
+      "kind": "supplies",
+      "invoice_date": "2026-09-22",
+      "free_extras_over": "150.00",
+      "net": "216.40",
+      "vat": {"rate": "0.20", "amount": "43.28"},
+      "total": "259.68",
+      "lines": [
+        {"name": "Nitrile gloves, medium (box 100)", "quantity": "20", "unit_price": "4.40", "amount": "88.00"},
+        {"name": "Patient bibs (pack 500)", "quantity": "2", "unit_price": "17.50", "amount": "35.00"},
+        {"name": "Sterilisation pouches (box 200)", "quantity": "3", "unit_price": "9.80", "amount": "29.40"},
+        {"name": "Impression material, heavy body", "quantity": "2", "unit_price": "32.00", "amount": "64.00"}
+      ]
+    }
+  },
+  {
+    "id": "29",
+    "practice": "Foxglove Dental",
+    "document": {
+      "kind": "service",
+      "invoice_date": "2026-09-20",
+      "renewal": {"renews_on": "2026-12-01", "cancel_by": "2026-11-01"},
+      "net": "128.00",
+      "vat": {"rate": "0.20", "amount": "25.60"},
+      "total": "153.60",
+      "lines": [
+        {"name": "Compressor service plan", "was": "52.00", "amount": "64.00"},
+        {"name": "Autoclave service plan", "was": "52.00", "amount": "64.00"}
+      ]
+    }
+  },
+  {
+    "id": "30",
+    "practice": "Harbour View Dental",
+    "document": {
+      "kind": "service",
+      "invoice_date": "2026-10-01",
+      "net": "269.00",
+      "vat": {"rate": "0.20", "amount": "53.80"},
+      "total": "322.80",
+      "lines": [
+        {"name": "Dental chair service plan: Surgery 1", "amount": "56.00"},
+        {"name": "Dental chair service plan: Surgery 2", "amount": "56.00"},
+        {
+          "name": "Dental chair service plan: Surgery 3",
+          "amount": "56.00",
+          "decommissioned_on": "2026-06-14"
+        },
+        {"name": "Intraoral X-ray service plan", "amount": "56.00"},
+        {"name": "Compressor service plan", "amount": "45.00"}
+      ]
+    }
+  }
+]

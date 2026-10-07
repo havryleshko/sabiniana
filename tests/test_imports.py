@@ -14,8 +14,8 @@ def test_check_is_deterministic_and_does_not_invent_a_gap():
     assert first["verdict"] == "incomplete"
 
 
-def test_reader_and_writer_are_not_built():
-    with pytest.raises(NotImplementedError):
+def test_reader_rejects_a_missing_file_and_writer_is_not_built():
+    with pytest.raises(FileNotFoundError):
         read("engine/inbox/statement.pdf")
     with pytest.raises(NotImplementedError):
         write({})
