@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dental Cost Watch</title>
+  <meta name="description" content="Send one card statement from an independent UK dental practice. Get one page back. Alex Havryleshko reads the draft before it is sent.">
+  <style>
+    html { background: #f3efe4; color: #1c1915; color-scheme: light; }
+    body {
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      font-size: 1.125rem;
+      line-height: 1.55;
+      margin: 0;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+    main { max-width: 60ch; margin: 0 auto; }
+    p { margin: 0 0 1rem; }
+    a { color: inherit; }
+    .sample {
+      font: inherit;
+      white-space: pre-wrap;
+      margin: 0 0 1.5rem;
+    }
+    label { display: block; }
+    input[type="text"],
+    input[type="email"] {
+      font: inherit;
+      color: inherit;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid currentColor;
+      border-radius: 0;
+      width: 100%;
+      padding: 0.2rem 0;
+      margin-top: 0.2rem;
+    }
+    input:focus { outline: 1px solid currentColor; outline-offset: 3px; }
+    .drop {
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+    .drop input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    #chosen:empty { display: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <p>Send one card statement. Get one page back.</p>
+    <p>Dental Cost Watch reads one card statement from an independent UK dental practice and sends one page back. Alex Havryleshko reads the draft before it is sent. There is no fee from a card provider. The page says what the statement shows. It does not say the price is fair.</p>
+    <p>This is a made-up sample.</p>
+    <pre class="sample">Draft for review. Nothing has been sent.
+
+Meadowbank Dental
+
+These checks found 2 points. The verdict is incomplete. No fair-price saving is stated, and this page does not say the price is fair.
+
+Effective rate: 1.62% of card sales.
+
+What the checks found:
+
+1. One flat rate of 1.50% is charged on card sales.
+2. Charged rate 1.50% differs from the agreed rate 1.25%. On this month's card sales that is £175.00 (£2100.00 a year).
+
+Effective rate is 0.72 percentage points above the observed average of 0.90% for annual card turnover of £380,000 to £1 million (2015-12 to 2018-12). Applied to £840000.00 of card sales, that is £6030.00 a year. This average is not a fair price.
+Source: Payment Systems Regulator, MR18/1.8 Annex 2: Pass-through analysis (November 2021), Table 6, group 4, post-IFR merchant-period average.
+
+Alex reads this page against the document before anything is sent. Nothing happens unless the practice replies.
+</pre>
+    <form>
+      <p>
+        <label>Practice name
+          <input name="practice" type="text" autocomplete="organization" required>
+        </label>
+      </p>
+      <p>
+        <label>Email
+          <input name="email" type="email" autocomplete="email" required>
+        </label>
+      </p>
+      <p class="drop">
+        <label>Drop the card statement here, or choose a file.
+          <input name="statement" type="file" accept="application/pdf,.pdf" required>
+        </label>
+      </p>
+      <p id="chosen"></p>
+      <p>The file is kept until the page has been sent, then deleted.</p>
+    </form>
+    <p>Alex Havryleshko<br>12 October 2026</p>
+  </main>
+  <script>
+    const input = document.querySelector('input[type="file"]');
+    const chosen = document.getElementById("chosen");
+    const spot = document.querySelector(".drop");
+
+    function show(file) {
+      chosen.textContent = file ? file.name : "";
+    }
+
+    input.addEventListener("change", function () {
+      show(input.files[0]);
+    });
+
+    ["dragenter", "dragover"].forEach(function (name) {
+      spot.addEventListener(name, function (event) {
+        event.preventDefault();
+      });
+    });
+
+    spot.addEventListener("drop", function (event) {
+      event.preventDefault();
+      const file = event.dataTransfer.files[0];
+      if (!file) return;
+      const transfer = new DataTransfer();
+      transfer.items.add(file);
+      input.files = transfer.files;
+      show(file);
+    });
+  </script>
+</body>
+</html>

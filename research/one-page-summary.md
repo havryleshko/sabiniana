@@ -49,7 +49,7 @@ Bills we watch, in this order: card fees, then lab, then consumables, energy, se
 
 Checks still blocked on a source and a date: a lab price list, an energy unit-rate comparison, and service-plan prices. The ranges in the sample answer key point at a deleted research note, MoneySuperMarket, and The Probe.
 
-**Also build:** a one-page website on its own domain (headline, sample report, 3 steps, upload form, why trust it, FAQ). No login, no "book a call".
+**Also build:** a one-page website on its own domain. The letter is in web/index.html: the promise, the made-up Meadowbank draft, and the form. Dropping a file does not send it yet. No login, no "book a call".
 
 ## 6. How we test it (without asking anyone)
 1. Post the free offer publicly under your own name, framed as payments insights.
@@ -59,7 +59,7 @@ Checks still blocked on a source and a date: a lab price list, an energy unit-ra
 ## 7. Next three steps
 1. Add the AI reader to the engine (you provide an API key).
 2. Replace the assumed price table with real, dated numbers.
-3. Pick a domain and put up the one-page site.
+3. Put the letter on a domain. The page is web/index.html. The drop field does not send a file yet.
 
 ## Sources (all in the project folder)
 research/card-fee-check-engine-spec.md, engine/README.md
